@@ -130,6 +130,8 @@
     "reselect": "3.0.1",
     "rxjs": "5.4.0",
     "semantic-ui-react": "0.71.3",
+    "truffle-contract": "^3.0.0",
+    "truffle-solidity-loader": "0.0.8",
     "include-media": "^1.4.9",
     "outdatedbrowser": "^1.1.5",
     "query-string": "^5.0.0",
