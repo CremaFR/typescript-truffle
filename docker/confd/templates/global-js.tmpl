@@ -1,0 +1,21 @@
+{{ $virtual_host := or (getenv "VIRTUAL_HOST") "" }}
+{{ $authprovider := or (getenv "AUTH_PROVIDER") "aad" }}
+{{ $aadtenand := or (getenv "AAD_TENANT") "" }}
+{{ $aadclientid := or (getenv "AAD_CLIENTID") "" }}
+{{ $ssl := or (getenv "SSL") "true" }}
+{{ $clientId := or (getenv "CLIENT_ID") "00" }}
+
+/**
+ * WARNING: this file will not be Babelified. USE only ES5
+ */
+var AppConfig = {
+    uri:       '{{ $virtual_host }}',
+    ssl: {{ if eq $ssl "true" }} true {{ else }} false {{ end }},
+    client: '{{ $clientId }}',
+    AuthStack: {
+        provider: '{{ $authprovider }}',
+        tenant:   '{{ $aadtenand }}',
+        clientId: '{{ $aadclientid }}'
+    }
+};
+

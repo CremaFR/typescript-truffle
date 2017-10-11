@@ -1,0 +1,50 @@
+[ignore]
+.*/build/.*
+.*/krankshaft/.*
+.*/react/node_modules/.*
+.*/node_modules/fbjs/.*
+.*/node_modules/react/.*
+.*/node_modules/react-motion/.*
+
+[include]
+./app
+./test
+
+[libs]
+./flowtype/*
+./node_modules/krankshaft/flow/*
+
+[options]
+strip_root=true
+munge_underscores=true
+# Sub-items of folder
+module.name_mapper='^\(classification\)\/\(.*\)?$' -> '<PROJECT_ROOT>/app/\1/\2'
+# Root folder
+module.name_mapper='^\(classification\)?$' -> '<PROJECT_ROOT>/app/\1'
+module.name_mapper='.*\(.scss\)'  -> '<PROJECT_ROOT>/flowtype/CssModule.js'
+module.name_mapper='^\(App\|AppConfig\)$' -> '<PROJECT_ROOT>/app/\1'
+module.name_mapper='^airflux/\(.*\)$' -> '<PROJECT_ROOT>/node_modules/airflux/lib/\1'
+module.name_mapper='^react-router/\(.*\)$' -> '<PROJECT_ROOT>/node_modules/react-router/lib/\1'
+module.name_mapper='^global-config$'  -> '<PROJECT_ROOT>/config/global.js'
+module.name_mapper='^client-config$'  -> '<PROJECT_ROOT>/config/customer.js'
+module.name_mapper='.+\.s?css'        -> 'CssModule'
+
+unsafe.enable_getters_and_setters=true
+esproposal.decorators=ignore
+esproposal.class_static_fields=ignore
+esproposal.class_instance_fields=ignore
+esproposal.export_star_as=enable
+
+suppress_comment= \\(.\\|\n\\)*\\$Airflux6
+suppress_comment= \\(.\\|\n\\)*\\$IgnoreFlow
+suppress_comment= \\(.\\|\n\\)*\\$FlowPrototypeDecl
+suppress_comment= \\(.\\|\n\\)*\\$FlowComputedProperty
+suppress_comment= \\(.\\|\n\\)*\\$FlowDynamicTypeCheckBug
+suppress_comment= \\(.\\|\n\\)*\\$FlowStyle
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment= \\(.\\|\n\\)*\\$Debugger
+suppress_comment= \\(.\\|\n\\)*\\$AnonymousClass
+suppress_comment= \\(.\\|\n\\)*\\$SvgTag
+
+[version]
+0.43.1

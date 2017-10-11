@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <% if (htmlWebpackPlugin.options.mobile) { %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <% } %>
+    <title><%=htmlWebpackPlugin.options.title || 'Webpack App'%></title>
+    <% if (htmlWebpackPlugin.files.favicon) { %>
+    <link rel="shortcut icon" href="<%=htmlWebpackPlugin.files.favicon%>">
+    <% } %>
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <!--link href="<%=htmlWebpackPlugin.files.css %>" rel="stylesheet"-->
+    <% } %>
+    <% if (htmlWebpackPlugin.options.csp) { %>
+    <meta http-equiv="Content-Security-Policy" content="<%=htmlWebpackPlugin.options.csp %>">
+    <% } %>
+    <script src="<%=require('file-loader!outdatedbrowser/outdatedbrowser/outdatedbrowser.min.js')%>"></script>
+</head>
+<body>
+<% if (htmlWebpackPlugin.options.appMountId) { %>
+<div id="<%=htmlWebpackPlugin.options.appMountId%>"></div>
+<% } %>
+<% if (htmlWebpackPlugin.options.appMountIds && htmlWebpackPlugin.options.appMountIds.length > 0) { %>
+<% for (var index in htmlWebpackPlugin.options.appMountIds) { %>
+<div id="<%=htmlWebpackPlugin.options.appMountIds[index]%>"></div>
+<% } %>
+<% } %>
+<script src="../config/global.js"></script>
+<!--script src="api/public/customerJs?v=<%=htmlWebpackPlugin.options.compileTime || '42'%>"></script-->
+<% if (htmlWebpackPlugin.options.window) { %>
+<script>
+    <% for (var varName in htmlWebpackPlugin.options.window) { %>
+        window['{%=varName%}'] = <%=JSON.stringify(htmlWebpackPlugin.options.window[varName])%>;
+        <% } %>
+</script>
+<% } %>
+<!--script src="adal.js"></script-->
+<script src=<%=require( 'file-loader!adal-angular/lib/adal' )%>></script>
+<% if (htmlWebpackPlugin.options.devServer) { %>
+<script src="<%=htmlWebpackPlugin.options.devServer%>/webpack-dev-server.js"></script>
+<% } %>
+<div id="outdated">
+</div>
+<script>
+    function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function() {
+                if (oldonload) {
+                    oldonload();
+                }
+                func();
+            }
+        }
+    }
+    //call plugin function after DOM ready
+    addLoadEvent(function(){
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'borderImage',
+            languagePath: "<%=require('file-loader!outdatedbrowser/outdatedbrowser/lang/en.html')%>"
+        })
+    });
+</script>
+</body>

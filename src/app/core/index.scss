@@ -1,0 +1,11 @@
+@import '~include-media/dist/_include-media.scss';
+
+$breakpoints: (
+    phone: 640px,
+    tablet: 768px,
+    desktop: 1024px) !default;
+
+$media-expressions: (
+    screen: "screen",
+    handheld: "handheld",
+    retina2x: ("(-webkit-min-device-pixel-ratio: 2)", "(min-resolution: 192dpi)")) !default;

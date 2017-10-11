@@ -1,0 +1,12 @@
+@import '../core/index.scss';
+
+
+.dashboard {
+    @include media('>tablet') {
+    }
+    @include media("<=tablet") {
+        padding-top: 8vh;
+        justify-content: center;
+    }
+}
+
