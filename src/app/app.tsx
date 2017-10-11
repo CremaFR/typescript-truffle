@@ -8,11 +8,14 @@ import { Provider }                                                          fro
 import createHistory                                                         from 'history/createHashHistory'
 import { createStore, combineReducers, applyMiddleware }                     from 'redux'
 import { composeWithDevTools }                                               from 'redux-devtools-extension'
+import { createEpicMiddleware }                                              from "redux-observable";
 import { ConnectedRouter, routerMiddleware }                                 from 'react-router-redux'
 import { IntlProvider, addLocaleData }                                       from 'react-intl'
 import * as en                                                               from 'react-intl/locale-data/en';
 
 import stores, { Stores }                                                    from './reducers'
+import epics                                                                 from './epics'
+
 // Load collaboration modules (to have auto-registering of modules)
 import './app.scss'
 
@@ -36,6 +39,7 @@ const store = createStore(
     } ),
     composeWithDevTools(
         applyMiddleware(
+            createEpicMiddleware( epics ),
             middleware
         )
     )
