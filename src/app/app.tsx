@@ -23,6 +23,7 @@ import './app.scss'
 import { Layout } from 'app/layout'
 import ScrollToTop from 'app/utils/ScrollToTop';
 import { TaxCalculation } from 'app/taxcalculation';
+import { Vote } from 'app/vote';
 import { Dashboard } from 'app/dashboard'
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -55,8 +56,8 @@ const AppPage = () => (
                     <Layout>
                         <Switch>
                             {/*<Route path="/" exact component={ Dashboard }/>*/}
-                            <Route path="/tax-calculation" component={ TaxCalculation }/>
-                            <Redirect to="/tax-calculation"/>
+                            <Route path="/vote" component={ Vote }/>
+                            <Redirect to="/vote"/>
                         </Switch>
                     </Layout>
                 </ScrollToTop>

@@ -2,9 +2,6 @@
   "name": "typescript-truffle",
   "version": "0.0.1",
   "description": "Awesome chat application (with ninjas!)",
-  "kpmg": {
-    "htmlTitle": "FATCA Classifiaction"
-  },
   "browserslist": [
     "last 2 version",
     "ie 11"
@@ -131,7 +128,7 @@
     "rxjs": "5.4.0",
     "semantic-ui-react": "0.71.3",
     "truffle-contract": "^3.0.0",
-    "truffle-solidity-loader": "0.0.8",
+    "web3": "1.0.0-beta.24",
     "include-media": "^1.4.9",
     "outdatedbrowser": "^1.1.5",
     "query-string": "^5.0.0",

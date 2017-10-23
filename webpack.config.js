@@ -26,6 +26,10 @@ const CopyStatics = [
     //{ from: path.resolve( Paths.node_modules_dir, 'collaboration-js/src/images' ), to: 'images' },
 ];
 
+const provided = {
+    'Web3': 'web3'
+}
+
 /*
  "babel-polyfill": "6.23.0",
  "classnames": "2.2.5",
@@ -142,7 +146,6 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin( 'vendor' ),
         // Generate a 'manifest' chunk to be inlined in the HTML template
         new webpack.optimize.CommonsChunkPlugin( 'manifest' ),
-
         new htmlWebpack( {
             appMountId: 'app',
             mobile    : true,
