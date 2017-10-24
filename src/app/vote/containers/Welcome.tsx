@@ -14,7 +14,7 @@ import * as actions from '../actions';
 
 function mapStateToProps(state: Stores, props: any): { } {
     return {
-
+        web3 : state.vote.web3
     };
 }
 

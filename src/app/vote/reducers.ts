@@ -1,26 +1,12 @@
 import {Reducer, ReducersMapObject} from 'redux';
-import * as flux from 'flux';
 
 import * as actions from './actions';
-import getWeb3 from 'app/utils/getWeb3'
-var VoteContract = require("./Vote.json");
-// const contract = require('truffle-contract')
+import Web3 = require("web3");
+import {INIT_WEB3} from "./actions";
+const VoteContract = require("./Vote.json");
+const contract = require('truffle-contract');
 
 
-function initWeb3() {
-    return getWeb3
-        .then( results => {
-            this.setState( {
-                web3: results.web3
-            } )
-
-            // Instantiate contract once web3 provided.
-            this.instantiateContract()
-        } )
-        .catch( () => {
-            console.log( 'Error finding web3.' )
-        } )
-}
 
 function connectContract() {
     return function (dispatch) {
@@ -52,32 +38,25 @@ function connectContract() {
 
 
 export const defaultState = (): any => ({
-    // voteContract: connectContract(),
-    web3: initWeb3()
+   web3 : null
 });
 
 export type Store = {
-    voteContract: any,
+    vote: {
+        web3 : Web3
+    },
 }
 
-
-/*******************************************************************************************************
- *
- *                                              ACTIONS
- *
- *******************************************************************************************************/
-
-function resetForm(state: any, action: actions.resetForm): any {
-    return {
-        ...defaultState()
+const reducer: Reducer<any> = (state = defaultState(), action: actions.Actions) => {
+    switch (action.type){
+        case INIT_WEB3:
+            const web3 = action.web3;
+            return { ...state, web3 };
+        default:
+            return state
     }
-}
-
-const reducer: Reducer<any> = (state = defaultState(), action: actions.Actions) => flux.Reducing
-    .of(actions.addCategory.Type, resetForm)
-    .or(actions.resetForm.Type, resetForm)
-    .exec(state, action);
+};
 
 export const reducers: ReducersMapObject = {
-    taxcalculation: reducer
+    vote: reducer
 };

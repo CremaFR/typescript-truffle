@@ -4,7 +4,7 @@ import 'reflect-metadata'
 import * as React                                                            from 'react'
 import * as ReactDom                                                         from 'react-dom'
 import { Redirect, Route, Switch }                                           from 'react-router'
-import { Provider }                                                          from 'react-redux'
+import { Provider, Dispatch }                                                          from 'react-redux'
 import createHistory                                                         from 'history/createHashHistory'
 import { createStore, combineReducers, applyMiddleware }                     from 'redux'
 import { composeWithDevTools }                                               from 'redux-devtools-extension'
@@ -22,9 +22,9 @@ import './app.scss'
 
 import { Layout } from 'app/layout'
 import ScrollToTop from 'app/utils/ScrollToTop';
-import { TaxCalculation } from 'app/taxcalculation';
 import { Vote } from 'app/vote';
-import { Dashboard } from 'app/dashboard'
+import { Dashboard } from 'app/dashboard';
+import {Web3Provider} from "./utils/Web3Provider";
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
@@ -52,15 +52,17 @@ const AppPage = () => (
     <Provider store={ store }>
         <IntlProvider locale="en">
             <ConnectedRouter history={ history }>
-                <ScrollToTop>
-                    <Layout>
-                        <Switch>
-                            {/*<Route path="/" exact component={ Dashboard }/>*/}
-                            <Route path="/vote" component={ Vote }/>
-                            <Redirect to="/vote"/>
-                        </Switch>
-                    </Layout>
-                </ScrollToTop>
+                <Web3Provider>
+                    <ScrollToTop>
+                        <Layout>
+                            <Switch>
+                                {/*<Route path="/" exact component={ Dashboard }/>*/}
+                                <Route path="/vote" component={ Vote }/>
+                                <Redirect to="/vote"/>
+                            </Switch>
+                        </Layout>
+                    </ScrollToTop>
+                </Web3Provider>
             </ConnectedRouter>
         </IntlProvider>
     </Provider>

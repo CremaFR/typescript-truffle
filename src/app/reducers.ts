@@ -7,8 +7,7 @@ import * as vote from './vote/reducers';
 //import { reducers as fS, Stores as FSS } from 'app/form-samples';
 
 
-export type Stores = taxcalculation.Store | vote.Store;
+export type Stores = vote.Store;
 export default {
-    ...taxcalculation.reducers,
     ...vote.reducers,
 };

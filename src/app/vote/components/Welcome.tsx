@@ -20,6 +20,9 @@ type WelcomeProps = {
 }
 
 const WelcomeBase: React.ComponentType<WelcomeProps & InjectedIntlProps> = props => {
+
+    console.log("welcome props",props);
+
     return (
         <div className="welcome">
             HELLO
