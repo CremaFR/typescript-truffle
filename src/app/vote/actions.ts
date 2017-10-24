@@ -13,7 +13,18 @@ export function initWeb3(web3 : Web3)  {
 }
 
 
+export type TEST = {
+    type : 'TEST',
+    web3 : Web3
+};
+export const TEST = 'TEST';
+
+export function initTest(test : any)  {
+    return { type: TEST, test }
+}
 
 
 
-export type Actions = INIT_WEB3;
+
+
+export type Actions = INIT_WEB3 | TEST;
