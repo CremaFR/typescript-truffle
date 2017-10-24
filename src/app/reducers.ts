@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 
-import * as taxcalculation from './taxcalculation/reducers';
 import * as vote from './vote/reducers';
 
 //import { reducers as coreR, Stores as CoreS } from 'app/core';
