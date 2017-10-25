@@ -1,5 +1,0 @@
-[template]
-src = "global-js.tmpl"
-dest = "/app/config/global.js"
-owner = "nginx"
-mode = "0644"
