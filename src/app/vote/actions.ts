@@ -13,18 +13,18 @@ export function initWeb3(web3 : Web3)  {
 }
 
 
-export type TEST = {
-    type : 'TEST',
-    web3 : Web3
+export type INIT_V0TE_CONTRACT = {
+    type : 'INIT_V0TE_CONTRACT',
+    instance : any
 };
-export const TEST = 'TEST';
+export const INIT_V0TE_CONTRACT = 'INIT_V0TE_CONTRACT';
 
-export function initTest(test : any)  {
-    return { type: TEST, test }
+export function initTest(instance : any)  {
+    return { type: INIT_V0TE_CONTRACT, instance }
 }
 
 
 
 
 
-export type Actions = INIT_WEB3 | TEST;
+export type Actions = INIT_WEB3 | INIT_V0TE_CONTRACT;
