@@ -4,7 +4,7 @@ import 'reflect-metadata'
 import * as React                                                            from 'react'
 import * as ReactDom                                                         from 'react-dom'
 import { Redirect, Route, Switch }                                           from 'react-router'
-import { Provider, Dispatch }                                                          from 'react-redux'
+import { Provider }                                                          from 'react-redux'
 import createHistory                                                         from 'history/createHashHistory'
 import { createStore, combineReducers, applyMiddleware }                     from 'redux'
 import { composeWithDevTools }                                               from 'redux-devtools-extension'
@@ -25,6 +25,7 @@ import ScrollToTop from 'app/utils/ScrollToTop';
 import { Vote } from 'app/vote';
 import { Dashboard } from 'app/dashboard';
 import {Web3Provider} from "./utils/Web3Provider";
+import {messages} from "../i18n/en-GB/index";
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
@@ -50,7 +51,7 @@ addLocaleData(en);
 
 const AppPage = () => (
     <Provider store={ store }>
-        <IntlProvider locale="en">
+        <IntlProvider locale="en" messages={ messages }>
             <ConnectedRouter history={ history }>
                 <Web3Provider>
                     <ScrollToTop>

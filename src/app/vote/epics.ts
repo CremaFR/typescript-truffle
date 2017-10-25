@@ -19,9 +19,13 @@ function connectVote(action : INIT_WEB3) {
             );
         };
     }
-    return Observable.fromPromise(authentication.deployed());
+    return Observable.fromPromise(authentication.deployed().then( voteInstance => {
+        return voteInstance.currentResult.call().then( currentResult => {
+            return { voteInstance , currentResult }
+        })
+    }));
 }
 
 
 export const connectContract = action$ =>
-    action$.ofType('INIT_WEB3').flatMap( action => connectVote( action )).map( instance => initTest(instance) );
+    action$.ofType('INIT_WEB3').flatMap( action => connectVote( action )).map( res => initTest(res) );

@@ -13,18 +13,21 @@ export function initWeb3(web3 : Web3)  {
 }
 
 
-export type INIT_V0TE_CONTRACT = {
-    type : 'INIT_V0TE_CONTRACT',
-    instance : any
+export type INIT_VOTE_CONTRACT = {
+    type : 'INIT_VOTE_CONTRACT',
+    res : {
+        voteInstance : any,
+        currentResult : boolean
+    }
 };
-export const INIT_V0TE_CONTRACT = 'INIT_V0TE_CONTRACT';
+export const INIT_VOTE_CONTRACT = 'INIT_VOTE_CONTRACT';
 
-export function initTest(instance : any)  {
-    return { type: INIT_V0TE_CONTRACT, instance }
+export function initTest(res : any)  {
+    return { type: INIT_VOTE_CONTRACT, res }
 }
 
 
 
 
 
-export type Actions = INIT_WEB3 | INIT_V0TE_CONTRACT;
+export type Actions = INIT_WEB3 | INIT_VOTE_CONTRACT;
