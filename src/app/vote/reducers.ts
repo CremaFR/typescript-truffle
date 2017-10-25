@@ -15,9 +15,10 @@ export const defaultState = (): any => ({
 
 export type Store = {
     vote: {
-        web3 : Web3,
-        voteInstance: any,
-        currentResult : boolean
+        web3 : Web3;
+        voteInstance: any;
+        currentResult : boolean;
+        account : any
     },
 }
 
@@ -30,7 +31,8 @@ const reducer: Reducer<any> = (state = defaultState(), action: actions.Actions) 
             console.log(action);
             const voteInstance = action.res.voteInstance;
             const currentResult = action.res.currentResult;
-            return { ...state, voteInstance, currentResult };
+            const account = action.res.account;
+            return { ...state, voteInstance, currentResult, account };
         default:
             return state
     }

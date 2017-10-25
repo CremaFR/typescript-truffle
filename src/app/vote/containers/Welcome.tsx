@@ -22,7 +22,9 @@ function mapStateToProps(state: Stores, props: any): { } {
 
 function mapDispatchToProps(dispatch: Dispatch<any>, props: any) {
     return {
-
+        vote: ( vote : boolean) => {
+            dispatch( actions.vote(vote) );
+        },
     };
 }
 

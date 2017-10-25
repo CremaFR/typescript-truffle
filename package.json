@@ -108,14 +108,18 @@
     "babel-polyfill": "6.23.0",
     "classnames": "2.2.5",
     "immutable": "3.8.1",
+    "include-media": "^1.4.9",
     "intl": "1.2.5",
     "jsdom": "11.0.0",
     "lodash": "4.17.4",
     "moment": "2.18.1",
     "normalize.css": "7.0.0",
+    "outdatedbrowser": "^1.1.5",
+    "query-string": "^5.0.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-intl": "2.3.0",
+    "react-media": "^1.6.1",
     "react-redux": "5.0.5",
     "react-router": "4.1.2",
     "react-router-dom": "4.1.2",
@@ -126,12 +130,9 @@
     "reflect-metadata": "0.1.10",
     "reselect": "3.0.1",
     "rxjs": "5.4.0",
+    "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "0.71.3",
     "truffle-contract": "^3.0.0",
-    "web3": "1.0.0-beta.24",
-    "include-media": "^1.4.9",
-    "outdatedbrowser": "^1.1.5",
-    "query-string": "^5.0.0",
-    "react-media": "^1.6.1"
+    "web3": "1.0.0-beta.24"
   }
 }

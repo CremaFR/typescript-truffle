@@ -5,15 +5,7 @@ import './layout.scss';
 
 
 const Layout = ( props: any ) => (
-    <div className="tax-app-layout">
-        <header>
-            <Link to="/">
-                <Icon name='grid layout' size="big"/>
-            </Link>
-        </header>
-        <Link to="/">
-            <Icon name="bars" circular className="menu"/>
-        </Link>
+    <div className="app-layout">
         <div className="app-content">
             { props.children }
         </div>

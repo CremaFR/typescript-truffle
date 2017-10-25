@@ -26,8 +26,26 @@ export function initTest(res : any)  {
     return { type: INIT_VOTE_CONTRACT, res }
 }
 
+export type VOTE = {
+    type : 'VOTE',
+    vote : boolean
+};
+export const VOTE = 'VOTE';
+
+export function vote(vote : boolean)  {
+    return { type: VOTE, vote }
+}
+
+export type HAS_VOTED = {
+    type : 'HAS_VOTED',
+    vote : boolean
+};
+export const HAS_VOTED = 'v';
+
+export function hasVoted(vote : boolean)  {
+    return { type: HAS_VOTED, vote }
+}
 
 
 
-
-export type Actions = INIT_WEB3 | INIT_VOTE_CONTRACT;
+export type Actions = INIT_WEB3 | INIT_VOTE_CONTRACT | VOTE | HAS_VOTED;

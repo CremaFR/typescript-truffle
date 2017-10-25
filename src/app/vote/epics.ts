@@ -1,4 +1,4 @@
-import { INIT_WEB3, initTest }  from "./actions";
+import {hasVoted, INIT_WEB3, initTest, VOTE}  from "./actions";
 import { Observable }           from "rxjs/Observable";
 
 const VoteContract = require("../../../build/contracts/Vote.json");
@@ -19,13 +19,34 @@ function connectVote(action : INIT_WEB3) {
             );
         };
     }
-    return Observable.fromPromise(authentication.deployed().then( voteInstance => {
-        return voteInstance.currentResult.call().then( currentResult => {
-            return { voteInstance , currentResult }
+    return Observable.fromPromise(web3.eth.getAccounts().then( ( accounts ) => {
+        const account = accounts[0];
+        return authentication.deployed().then( voteInstance => {
+            return voteInstance.currentResult.call().then( currentResult => {
+                return { voteInstance , currentResult, account }
+            })
         })
     }));
 }
 
+function writeVote(action: VOTE, store : any){
+    const voteStore = store.getState().vote;
 
+
+    voteStore.voteInstance.participate(action.vote, { from : voteStore.account } );
+
+    return Observable.fromPromise(Promise.resolve(true));
+}
+
+/**
+ * TODO Return multiple actions
+ * @param action$
+ */
 export const connectContract = action$ =>
     action$.ofType('INIT_WEB3').flatMap( action => connectVote( action )).map( res => initTest(res) );
+
+export const vote = (action$, store) =>
+    action$.ofType('VOTE').flatMap( action => writeVote( action, store )).map( res => hasVoted(res) );
+
+
+export const getCurrrentRes = action$ => action$.ofType('TODO');
