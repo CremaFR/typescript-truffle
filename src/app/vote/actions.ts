@@ -70,10 +70,13 @@ export function vote(vote : boolean)  {
 
 export type HAS_VOTED = {
     type : 'HAS_VOTED',
-    vote : boolean
+    voter : {
+        address : string,
+        vote : boolean
+    }
 };
-export function hasVoted(vote : boolean)  {
-    return { type: HAS_VOTED, vote }
+export function hasVoted( address : string, vote : boolean )  {
+    return { type: HAS_VOTED, voter : { address, vote } }
 }
 
 

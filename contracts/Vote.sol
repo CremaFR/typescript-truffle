@@ -53,7 +53,6 @@ contract Vote is Killable {
 
     function participate(bool vote)
     payable
-    hasNotVoted
     isNotClosed
     public {
         currentVote.participants[msg.sender] = vote;

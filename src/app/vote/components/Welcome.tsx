@@ -6,10 +6,9 @@ import Web3 = require("web3");
 import './Welcome.scss'
 
 type WelcomeProps = {
-    web3 : Web3;
-    voteInstance : any;
     currentResult: boolean;
     vote: (vote : boolean) => void;
+    voter: any;
 }
 
 
@@ -31,6 +30,13 @@ const Welcome: React.ComponentType<WelcomeProps> = props => {
             <div>
                 <Button onClick={ _ => props.vote(true)} > Vote YES </Button>
                 <Button onClick={ _ => props.vote(false)} > Vote NO </Button>
+            </div>
+
+            <div>
+                <h1>  EVENTS </h1>
+                <ul>
+                    <li> { `address:  ${props.voter ? props.voter.address : null} voted :  ` }</li>
+                </ul>
             </div>
 
 

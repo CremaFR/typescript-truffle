@@ -2,7 +2,7 @@ import {Reducer, ReducersMapObject} from 'redux';
 
 import * as actions from './actions';
 import Web3 = require("web3");
-import {INIT_WEB3, INIT_VOTE_CONTRACT, INIT_ACCOUNT, CURRENT_RESULT} from "./actions";
+import {INIT_WEB3, INIT_VOTE_CONTRACT, INIT_ACCOUNT, CURRENT_RESULT, hasVoted, HAS_VOTED} from "./actions";
 const VoteContract = require("./Vote.json");
 const contract = require('truffle-contract');
 
@@ -18,7 +18,8 @@ export type Store = {
         web3 : Web3;
         voteInstance: any;
         currentResult : boolean;
-        account : string
+        account : string;
+        voter : any;
     },
 }
 
@@ -36,6 +37,10 @@ const reducer: Reducer<any> = (state = defaultState(), action: actions.Actions) 
         case CURRENT_RESULT:
             const currentResult = action.result;
             return { ...state, currentResult };
+        case HAS_VOTED:
+            console.log("action catch",action.voter);
+            const voter = action.voter;
+            return { ...state, voter };
         default:
             return state
     }

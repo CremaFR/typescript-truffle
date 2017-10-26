@@ -48,18 +48,32 @@ function writeVote(action: VOTE, store : any){
     return Observable.fromPromise(Promise.resolve(true));
 }
 
-/**
- * TODO Return multiple actions
- * @param action$
- */
+function registerEventVoter( store ){
+    const voteInstance = store.getState().vote.voteInstance;
+    const event = voteInstance.Voted();
+    return Observable.create(
+        observer => { event.watch( (error, res) => {
+            if (error){ console.error(error); }
+            else {
+                observer.next(hasVoted(res.args.voter, res.args.vote))
+                observer.next(currentResult(res.args.currentResult))
+            }
+        }) }
+    )
+}
+
+
 export const connectContract = action$ =>
     action$.ofType('INIT_WEB3').flatMap( action => connectVote(action).flatMap( cv => getAccount(action).flatMap(ga => [cv, ga]) ));
 
-export const ContractConnected = (action$, store) =>
+export const contractConnected = (action$, store) =>
     action$.ofType('INIT_VOTE_CONTRACT', 'GET_CURRENT_RESULT').flatMap( action => getCurrentResult(store));
 
+export const initWatcher = (action$, store) =>
+    action$.ofType('INIT_VOTE_CONTRACT').flatMap( action => registerEventVoter(store))
+
 export const vote = (action$, store) =>
-    action$.ofType('VOTE').flatMap( action => writeVote( action, store )).map( res => hasVoted(res) );
+    action$.ofType('VOTE').flatMap( action => writeVote( action, store )).flatMap( res => getCurrentResult(store) );
 
 
 export const getCurrrentRes = action$ => action$.ofType('TODO');
