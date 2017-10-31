@@ -50,13 +50,14 @@ function writeVote(action: VOTE, store : any){
 
 function registerEventVoter( store ){
     const voteInstance = store.getState().vote.voteInstance;
-    const event = voteInstance.Voted();
+    const event = voteInstance.Voted({},{ fromBlock : 1000 , topics : null});
+    console.log(event)
     return Observable.create(
         observer => { event.watch( (error, res) => {
             if (error){ console.error(error); }
             else {
-                observer.next(hasVoted(res.args.voter, res.args.vote))
-                observer.next(currentResult(res.args.currentResult))
+                observer.next(hasVoted(res.args.voter, res.args.vote));
+                observer.next(currentResult(res.args.currentResult));
             }
         }) }
     )

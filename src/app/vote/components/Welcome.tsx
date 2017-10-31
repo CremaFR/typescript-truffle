@@ -8,12 +8,16 @@ import './Welcome.scss'
 type WelcomeProps = {
     currentResult: boolean;
     vote: (vote : boolean) => void;
-    voter: any;
+    voters: any;
 }
 
 
 function result( result : boolean) : string {
     return result ? "VOTE OK" : "VOTE NON OK"
+}
+
+function getTextVote(vote : boolean) : string {
+    return vote ? "POUR" : "CONTRE"
 }
 
 
@@ -35,7 +39,11 @@ const Welcome: React.ComponentType<WelcomeProps> = props => {
             <div>
                 <h1>  EVENTS </h1>
                 <ul>
-                    <li> { `address:  ${props.voter ? props.voter.address : null} voted :  ` }</li>
+                    {
+                        props.voters.map( (voter, i) =>
+                            <li key={i}> { `address:  ${voter.address} voted : ${getTextVote(voter.vote)} ` }</li>
+                        )
+                    }
                 </ul>
             </div>
 

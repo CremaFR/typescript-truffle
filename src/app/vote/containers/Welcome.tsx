@@ -15,7 +15,7 @@ import * as actions from '../actions';
 function mapStateToProps(state: Stores, props: any): { } {
     return {
         currentResult : state.vote.currentResult,
-        voter : state.vote.voter
+        voters : state.vote.voters
     };
 }
 

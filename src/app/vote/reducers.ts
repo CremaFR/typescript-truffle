@@ -10,7 +10,8 @@ const contract = require('truffle-contract');
 
 
 export const defaultState = (): any => ({
-   web3 : null
+    web3 : null,
+    voters : []
 });
 
 export type Store = {
@@ -19,7 +20,7 @@ export type Store = {
         voteInstance: any;
         currentResult : boolean;
         account : string;
-        voter : any;
+        voters : Array<any>;
     },
 }
 
@@ -38,9 +39,9 @@ const reducer: Reducer<any> = (state = defaultState(), action: actions.Actions) 
             const currentResult = action.result;
             return { ...state, currentResult };
         case HAS_VOTED:
-            console.log("action catch",action.voter);
-            const voter = action.voter;
-            return { ...state, voter };
+            const voters = state.voters.slice()
+            voters.push(action.voter);
+            return { ...state, voters };
         default:
             return state
     }

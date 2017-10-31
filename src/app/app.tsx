@@ -24,8 +24,7 @@ import { Layout } from 'app/layout'
 import ScrollToTop from 'app/utils/ScrollToTop';
 import { Vote } from 'app/vote';
 import { Dashboard } from 'app/dashboard';
-import {Web3Provider} from "./utils/Web3Provider";
-import {messages} from "../i18n/en-GB/index";
+import {Web3Provider} from "./utils/Web3Provider"; import {messages} from "../i18n/en-GB/index";
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
@@ -52,19 +51,19 @@ addLocaleData(en);
 const AppPage = () => (
     <Provider store={ store }>
         <IntlProvider locale="en" messages={ messages }>
-            <ConnectedRouter history={ history }>
-                <Web3Provider>
-                    <ScrollToTop>
-                        <Layout>
-                            <Switch>
-                                {/*<Route path="/" exact component={ Dashboard }/>*/}
-                                <Route path="/vote" component={ Vote }/>
-                                <Redirect to="/vote"/>
-                            </Switch>
-                        </Layout>
-                    </ScrollToTop>
-                </Web3Provider>
-            </ConnectedRouter>
+            <Web3Provider>
+                <ConnectedRouter history={ history }>
+                        <ScrollToTop>
+                            <Layout>
+                                <Switch>
+                                    {/*<Route path="/" exact component={ Dashboard }/>*/}
+                                    <Route path="/vote" component={ Vote }/>
+                                    <Redirect to="/vote"/>
+                                </Switch>
+                            </Layout>
+                        </ScrollToTop>
+                </ConnectedRouter>
+            </Web3Provider>
         </IntlProvider>
     </Provider>
 );

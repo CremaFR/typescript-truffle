@@ -11,7 +11,7 @@ const Vote = (props: any) => {
     return (
         <Container className="vote">
             <Switch>
-                <Route path="/vote/welcome" exact component={ Welcome }/>
+                <Route path="/vote/welcome" component={ Welcome }/>
                 <Redirect to="/vote/welcome"/>
             </Switch>
         </Container>
