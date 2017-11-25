@@ -6,11 +6,11 @@ import './zeppelin/lifecycle/Killable.sol';
 contract Vote is Killable {
 
     struct sujet {
-    mapping( address => bool ) participants;
-    string titre;
-    int128 nbVote;
-    int128 currentResult;
-    bool isClosed;
+        mapping( address => bool ) participants;
+        string titre;
+        int128 nbVote;
+        int128 currentResult;
+        bool isClosed;
     }
 
     sujet currentVote;

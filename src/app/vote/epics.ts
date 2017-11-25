@@ -7,7 +7,11 @@ import { Observable }           from "rxjs/Observable";
 const VoteContract = require("../../../build/contracts/Vote.json");
 const contract = require('truffle-contract');
 
-
+/**
+ * Get the instance of our deployed contract
+ * @param action
+ * @returns {any}
+ */
 function connectVote(action : INIT_WEB3): Observable< INIT_VOTE_CONTRACT > {
     // Using truffle-contract we create the authentication object.
     const authentication = contract(VoteContract);
@@ -33,7 +37,11 @@ function getAccount( action : INIT_WEB3 ): Observable< INIT_ACCOUNT >{
     }))
 }
 
-
+/**
+ *
+ * @param store
+ * @returns {any}
+ */
 function getCurrentResult( store : any ) {
     const voteStore = store.getState().vote;
     return Observable.fromPromise(voteStore.voteInstance.currentResult.call().then( res => {
@@ -41,16 +49,29 @@ function getCurrentResult( store : any ) {
     }))
 }
 
-
+/**
+ * Execute a transaction to vote on the blockchain
+ * return a resolved promise because this write action returns a tx id
+ * See registerEventVoter below to see how to catch the result of the action
+ * @param action
+ * @param store
+ */
 function writeVote(action: VOTE, store : any){
     const voteStore = store.getState().vote;
     voteStore.voteInstance.participate(action.vote, { from : voteStore.account } );
     return Observable.fromPromise(Promise.resolve(true));
 }
 
-function registerEventVoter( store ){
+/**
+ * Create an Observable to listen to Voted event described in the contract
+ * fromBlock is to retrieve events on the past default value is latest
+ * I set 1000 to retrieve events I have done before
+ * @param store
+ */
+function registerEventVoter( store : any  ){
+    const fromBlock = 1000;
     const voteInstance = store.getState().vote.voteInstance;
-    const event = voteInstance.Voted({},{ fromBlock : 1000 , topics : null});
+    const event = voteInstance.Voted({},{ fromBlock : fromBlock , topics : null});
     console.log(event)
     return Observable.create(
         observer => { event.watch( (error, res) => {

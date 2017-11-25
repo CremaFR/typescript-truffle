@@ -39,7 +39,7 @@ const reducer: Reducer<any> = (state = defaultState(), action: actions.Actions) 
             const currentResult = action.result;
             return { ...state, currentResult };
         case HAS_VOTED:
-            const voters = state.voters.slice()
+            const voters = state.voters.slice();
             voters.push(action.voter);
             return { ...state, voters };
         default:
