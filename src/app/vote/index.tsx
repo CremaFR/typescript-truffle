@@ -16,6 +16,6 @@ const Vote = (props: any) => {
             </Switch>
         </Container>
     );
-}
+};
 
 export { Vote };

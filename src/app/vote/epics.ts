@@ -96,6 +96,3 @@ export const initWatcher = (action$, store) =>
 
 export const vote = (action$, store) =>
     action$.ofType('VOTE').flatMap( action => writeVote( action, store )).flatMap( res => getCurrentResult(store) );
-
-
-export const getCurrrentRes = action$ => action$.ofType('TODO');

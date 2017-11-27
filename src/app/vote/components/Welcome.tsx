@@ -17,7 +17,7 @@ function result( result : boolean) : string {
 }
 
 function getTextVote(vote : boolean) : string {
-    return vote ? "POUR" : "CONTRE"
+    return vote ? "YES" : "NO"
 }
 
 
