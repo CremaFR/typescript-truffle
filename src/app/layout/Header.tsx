@@ -8,37 +8,25 @@ type HeaderProps = {
 }
 
 
-const Header: React.ComponentType<HeaderProps> = props => {
+const Header: React.ComponentType<HeaderProps> = props =>
+    <Menu>
+        <Menu.Item name='welcome'>
+            Welcome
+        </Menu.Item>
 
-    console.log("Header props",props);
+        <Menu.Item name='reviews'>
+            TODO
+        </Menu.Item>
 
-    return (
-        <Menu>
-            <Menu.Item
-                name='editorials'
-                onClick={this.handleItemClick}
-            >
-                Editorials
+        <Menu.Menu position='right'>
+            <Menu.Item href="https://github.com/CremaFR/typescript-truffle" target="_blank" >
+                <Icon name='github' size="large"/>
             </Menu.Item>
-
-            <Menu.Item
-                name='reviews'
-                onClick={this.handleItemClick}
-            >
-                Reviews
+            <Menu.Item href="https://ethereum.stackexchange.com/users/8540/crema" target="_blank" >
+                <Icon name='stack overflow' size="large"/>
             </Menu.Item>
-
-            <Menu.Menu position='right'>
-                <Menu.Item href="https://github.com/CremaFR/typescript-truffle" target="_blank" >
-                    <Icon name='github' size="large"/>
-                </Menu.Item>
-                <Menu.Item href="https://ethereum.stackexchange.com/users/8540/crema" target="_blank" >
-                    <Icon name='stack overflow' size="large"/>
-                </Menu.Item>
-            </Menu.Menu>
-        </Menu>
-    );
-}
+        </Menu.Menu>
+    </Menu>
 
 export { Header };
 

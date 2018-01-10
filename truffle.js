@@ -1,0 +1,21 @@
+module.exports = {
+  migrations_directory: "./migrations",
+  networks: {
+    development: {
+      host: "localhost",
+      port: 8545,
+      network_id: 16, // Match any network id
+      gas: 4600000,
+      from: "0xe927bd9c4a9508f8ffb2aae7d0131b34fc5fc953"
+    }
+  }
+};
+
+
+//seed geth  -- addr : 6e47940acb066aecfeb11f8bdf2f44ad11352726
+// 0x67056bB7CcC08f1F9B0cE3EfDbA5130ED3043E0c
+
+// geth --rpc --rpccorsdomain "*" --ws  --wsorigins "*"  --networkid 16 --datadir pnet/ --port "30303" --nodiscover console
+// personal.unlockAccount('0x4a17415b7915ba0e4b1f7065c32a01a098adf2d2', 'geth')
+// personal.unlockAccount('0xe927bd9c4a9508f8ffb2aae7d0131b34fc5fc953')
+

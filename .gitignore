@@ -12,9 +12,8 @@
 !test/http-context.js
 !test/jsdom.js
 build
+!truffle.js
 
-scripts/copy-collab.sh
-scripts/copy-krankshaft.sh
 .vscode/
 
 
