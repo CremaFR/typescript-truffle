@@ -22,8 +22,9 @@ let getWeb3 = new Promise(function(resolve, reject) {
       resolve(web3)
     } else {
       // Fallback to localhost if no web3 injection.
-      web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
-      // web3 = new Web3('http://localhost:8545');
+      // web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
+      // We're waiting for ganache to support ws connection using http right now. Subscriptions will not work anymore
+      web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
       console.log('No web3 instance injected, using Local web3.', web3);
       resolve(web3)
     }

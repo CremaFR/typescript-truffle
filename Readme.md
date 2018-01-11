@@ -15,8 +15,8 @@ We are using Geth instead of Testrpc for our developpment because new web3.js do
 
 install geth on MacOS
 
-`brew tap ethereum/ethereum
- brew install ethereum`
+`brew tap ethereum/ethereum`
+`brew install ethereum`
 
 ### Installation
 

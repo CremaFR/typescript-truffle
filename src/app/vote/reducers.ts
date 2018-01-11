@@ -3,9 +3,6 @@ import {Reducer, ReducersMapObject} from 'redux';
 import * as actions from './actions';
 import Web3 = require("web3");
 import {INIT_WEB3, INIT_VOTE_CONTRACT, INIT_ACCOUNT, CURRENT_RESULT, hasVoted, HAS_VOTED} from "./actions";
-const VoteContract = require("./Vote.json");
-const contract = require('truffle-contract');
-
 
 
 
