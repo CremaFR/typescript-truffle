@@ -22,6 +22,13 @@ install geth on MacOS
 
 TODO see geth
 
+## Ganache
+
+[Ganache](https://github.com/trufflesuite/ganache) can be used instead of geth.
+
+truffle.js is currently configured to use ganache so nothing to do right now
+
+
 ### Set up environment
 
 First create our blockchain using Geth
