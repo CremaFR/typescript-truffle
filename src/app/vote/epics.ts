@@ -69,7 +69,7 @@ function writeVote(action: VOTE, store : any){
  * @param store
  */
 function registerEventVoter( store : any  ){
-    const fromBlock = 1000;
+    const fromBlock = 0;
     const voteInstance = store.getState().vote.voteInstance;
     const event = voteInstance.Voted({},{ fromBlock : fromBlock , topics : null});
     console.log(event)
