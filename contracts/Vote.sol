@@ -15,11 +15,19 @@ contract Vote is Killable {
 
     sujet currentVote;
 
+    /************************
+            EVENTS
+    ************************/
+
     /* fired when user has voted */
-    event Voted (address voter, bool vote, bool currentResult );
+    event Voted (address voter, bool vote, bool currentResult);
 
     /* fired when owner end the vote */
-    event VoteClose ( bool currentResult );
+    event VoteClose (bool currentResult);
+
+    /************************
+            MODIFIERS
+    ************************/
 
     modifier onlyOwner {
         require( msg.sender == owner );
@@ -54,6 +62,7 @@ contract Vote is Killable {
     function participate(bool vote)
     payable
     isNotClosed
+    hasNotVoted
     public {
         currentVote.participants[msg.sender] = vote;
         if( vote == true ){
