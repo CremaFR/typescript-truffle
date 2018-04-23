@@ -63,4 +63,7 @@ Do not forget to replace the `from` field with your address inside `truffle.js`
 
 ## Run
 
+
+`truffle develop` to instanciate local blockchain with Ganache
+
 `npm start` and it should work ! you'll be able to interact with my VoteContract using your web application :)
