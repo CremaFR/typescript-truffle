@@ -1,7 +1,7 @@
 {
   "name": "Smart-contract-exemple",
   "version": "0.0.1",
-  "description": "Awesome chat application (with ninjas!)",
+  "description": "",
   "browserslist": [
     "last 2 version",
     "ie 11"
@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@ggitlab.dev-abplatform.net:trainings/todo-app.git"
+    "url": "git@github.com/CremaFR/typescript-truffle.git"
   },
   "keywords": [
     "JavaScript",
@@ -44,11 +44,8 @@
     "Collaboration",
     "AIFMD"
   ],
-  "publishConfig": {
-    "registry": "https://repository.dev-abplatform.net.priv/content/repositories/kpmgjs/"
-  },
-  "author": "KPMG Luxembourg, Technology & Data Analytics",
-  "license": "ISC",
+  "author": "Crema",
+  "license": "MIT",
   "devDependencies": {
     "@types/mocha": "^2.2.40",
     "@types/power-assert": "^1.4.29",
@@ -67,7 +64,7 @@
     "html-webpack-plugin": "^2.28.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.8.3",
     "nsp": "^2.2.0",
     "nyc": "^11.0.2",
     "postcss-loader": "^2.0.6",
@@ -104,7 +101,6 @@
     "@types/react-router-redux": "5.0.0",
     "@types/redux-form": "^7.0.2",
     "@types/reflect-metadata": "0.0.5",
-    "adal-react-redux": "1.0.0-20170821074734",
     "babel-polyfill": "6.23.0",
     "classnames": "2.2.5",
     "immutable": "3.8.1",
@@ -133,6 +129,6 @@
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "0.71.3",
     "truffle-contract": "^3.0.0",
-    "web3": "1.0.0-beta.24"
+    "web3": "1.0.0-beta.34"
   }
 }
