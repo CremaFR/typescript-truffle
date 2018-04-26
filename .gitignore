@@ -13,6 +13,7 @@
 !test/jsdom.js
 build
 !truffle.js
+!migrations/*
 
 .vscode/
 
