@@ -1,32 +1,17 @@
 ## Readme
 
-
-
-## Installation
+### Installation
 
 Clone the projet then
 
 `npm install`
 
-
-## Geth
-
-We are using Geth instead of Testrpc for our developpment because new web3.js doesn't support http connection. So we're using geth websockets
-
-install geth on MacOS
-
-`brew tap ethereum/ethereum`
-`brew install ethereum`
-
-### Installation
-
-TODO see geth
-
 ## Ganache
 
-[Ganache](https://github.com/trufflesuite/ganache) can be used instead of geth.
 
-truffle.js is currently configured to use ganache so nothing to do right now
+Download [Ganache](https://github.com/trufflesuite/ganache) or use `truffle develop` to set up a local blockchain for development
+
+truffle.js is currently configured to use Ganache
 
 ## Truffle
 
@@ -40,10 +25,9 @@ Do not forget to replace the `from` field with your address inside `truffle.js`
 
 ## Run
 
+`truffle develop` to instantiate local blockchain with Ganache
 
-`truffle develop` to instanciate local blockchain with Ganache
-
-`npm start` and it should work ! you'll be able to interact with my VoteContract using your web application :)
+`npm start` and it should work ! you'll be able to interact with VoteContract using your web application :)
 
 
 ## troubleshooting
