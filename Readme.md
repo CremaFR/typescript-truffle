@@ -36,4 +36,4 @@ Do not forget to replace the `from` field with your address inside `truffle.js`
 
 You might need to run this in case `npm install` fails
 
-`npm install --global --production windows-build-tool`
+`npm install --global --production windows-build-tools`
